@@ -91,6 +91,7 @@
 
     <script>
       const elements = [
+        //อย่าโกง นะจะ
         { symbol: "H", name: "Hydrogen" },
         { symbol: "He", name: "Helium" },
         { symbol: "Li", name: "Lithium" },
@@ -141,7 +142,7 @@
       let interval = null;
 
       function startRandom() {
-        if (interval !== null) return; // ป้องกันการเริ่ม interval ซ้ำ
+        if (interval !== null) return;
         document.getElementById("name").textContent = "";
         interval = setInterval(() => {
           current = elements[Math.floor(Math.random() * elements.length)];
