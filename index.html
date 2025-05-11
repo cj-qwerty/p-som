@@ -60,14 +60,12 @@
         align-items: center;
       }
 
-      /* ปรับให้ปุ่มมีรูปแบบที่ดูสะดุดตา */
       .buttons-container {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
       }
 
-      /* เพิ่มส่วนขอบรอบ ๆ หน้าจอ */
       .reset-button {
         background-color: #e94e77;
       }
@@ -143,6 +141,7 @@
       let interval = null;
 
       function startRandom() {
+        if (interval !== null) return; // ป้องกันการเริ่ม interval ซ้ำ
         document.getElementById("name").textContent = "";
         interval = setInterval(() => {
           current = elements[Math.floor(Math.random() * elements.length)];
@@ -152,6 +151,7 @@
 
       function stopRandom() {
         clearInterval(interval);
+        interval = null;
       }
 
       function showAnswer() {
@@ -162,8 +162,10 @@
 
       function resetRandom() {
         clearInterval(interval);
-        document.getElementById("symbol").textContent = "?"; // Reset symbol
-        document.getElementById("name").textContent = ""; // Reset name
+        interval = null;
+        current = null;
+        document.getElementById("symbol").textContent = "?";
+        document.getElementById("name").textContent = "";
       }
     </script>
   </body>
